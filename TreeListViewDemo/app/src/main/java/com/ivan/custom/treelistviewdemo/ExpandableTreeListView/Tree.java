@@ -16,6 +16,7 @@ public class Tree {
 
     public void setRoot(TreeListNodeData root) {
         this.root = new TreeNode(root);
+        this.root.expand();
         root.setLevel(0);
     }
 
@@ -38,6 +39,35 @@ public class Tree {
         return results;
     }
 
+    /**
+     * 获取指定id的节点
+     * @param id 指定节点的id
+     * @return 树节点
+     */
+    public TreeNode findNode(int id) {
+        Holder holder = new Holder();
+        find(id, root, holder);
+        return holder.node;
+    }
+
+    private void find(int id, TreeNode node, Holder holder) {
+        if (node.getId() == id) {
+            holder.node = node;
+            return;
+        }
+        ArrayList<TreeNode> children = node.getChildrenNodeList();
+        if (children == null) {
+            return;
+        }
+        for (int i=0;i<children.size();i++) {
+            TreeNode child = children.get(i);
+            find(id, child, holder);
+            if (holder.node != null) {
+                return;
+            }
+        }
+    }
+
     private void searchDepthFirst(TreeNode node, ArrayList<TreeNode> collection) {
         if (!node.isExpand()) {
             return;
@@ -51,6 +81,10 @@ public class Tree {
             collection.add(child);
             searchDepthFirst(child, collection);
         }
+    }
+
+    private class Holder {
+        TreeNode node;
     }
 
 }

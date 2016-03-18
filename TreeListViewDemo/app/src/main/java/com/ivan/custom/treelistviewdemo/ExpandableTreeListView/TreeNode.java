@@ -11,7 +11,7 @@ class TreeNode {
     private TreeListNodeData contents;
     private TreeNode parentNode;
     private ArrayList<TreeNode> childrenNodeList;
-    private boolean expand = true;
+    private boolean expand = false;
 
     public TreeNode(TreeListNodeData contents) {
         setContents(contents);

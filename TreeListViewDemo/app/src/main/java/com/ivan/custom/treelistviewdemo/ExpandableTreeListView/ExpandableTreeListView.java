@@ -5,15 +5,13 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
-
-import com.ivan.healthcare.healthcare_android.view.CustomListView.PinnedHeaderListView.PinnedHeaderListView;
+import android.widget.ListView;
 
 /**
  * 可折叠展开的listView，其继承自顶部section浮动的PinnedHeaderListView
- * @see #PinnedHeaderListView
  * Created by Ivan on 16/2/13.
  */
-public class ExpandableTreeListView extends PinnedHeaderListView {
+public class ExpandableTreeListView extends ListView {
 
     private ExpandableTreeAdapter expandableTreeAdapter;
     private AdapterView.OnItemClickListener onItemClickListener;
@@ -38,12 +36,6 @@ public class ExpandableTreeListView extends PinnedHeaderListView {
                 if (expandableTreeAdapter == null) {
                     return;
                 }
-                update(position);
-            }
-        });
-        setOnFloatSectionClickListener(new OnFloatSectionClickListener() {
-            @Override
-            public void onFloatSectionClick(View sectionView, final int position) {
                 update(position);
             }
         });
