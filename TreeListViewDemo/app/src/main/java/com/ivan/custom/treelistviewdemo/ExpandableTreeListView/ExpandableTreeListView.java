@@ -8,7 +8,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 /**
- * 可折叠展开的listView，其继承自顶部section浮动的PinnedHeaderListView
+ * 可折叠展开的listView
  * Created by Ivan on 16/2/13.
  */
 public class ExpandableTreeListView extends ListView {
